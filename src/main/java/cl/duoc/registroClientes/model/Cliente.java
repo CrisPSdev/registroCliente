@@ -1,5 +1,7 @@
 package cl.duoc.registroClientes.model;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +11,14 @@ import lombok.Data;
 @NotBlank
 
 public class Cliente {
-    private int rut;
-    private String dv_rut;
-    private String nombre;
-    private String apellido;
+    private int id;
+    private int numRun;
+    private String dvRun;
+    private String pnombre;
+    private String snombre;
+    private String appaterno;
+    private String apmaterno;
+    private String correo;
+    private int fono;
+    private LocalDate fechaNacimiento;
 }
