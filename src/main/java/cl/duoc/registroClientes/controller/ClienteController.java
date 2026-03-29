@@ -33,9 +33,15 @@ public class ClienteController {
     }
     
     @PostMapping
-    public ResponseEntity<Cliente> agregarCliente(@Valid @RequestBody Cliente cliente){
+    public ResponseEntity<?> agregarCliente(@Valid @RequestBody Cliente cliente){
         Cliente nuevo = clienteService.agregarCliente(cliente);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
+        if (nuevo != null){
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error.");
+        }
+
     }
 
     @DeleteMapping("{mail}")

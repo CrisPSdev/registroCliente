@@ -18,8 +18,12 @@ public class ClienteService {
         return clienteRepository.obtenerClientes();
     }
 
-    public Cliente agregarCliente (Cliente c){
-        return clienteRepository.agregar(c);
+    public Cliente agregarCliente (Cliente c){  
+        Cliente nuevo = clienteRepository.buscarPorRun(c.getNumRun(), c.getDvRun());
+        if (nuevo != null) {
+            return clienteRepository.agregar(c);   
+        }
+        return null;
     }
 
     public String eliminarCliente (String c){
